@@ -1,0 +1,174 @@
+{
+  "custom/separator": {
+    "format": "|",
+    "interval": "once",
+    "tooltip": false
+  },
+
+  "sway/window": {
+    "format": "{title}",
+    "max-length": 100,
+    "tooltip": false,
+    "rewrite": {
+      "~": "🏡",
+      "nvim": "   $1",
+      "nvim (.*)": "   $1",
+      "(.*) — LibreWolf": "      $1",
+      "(.*) - Obsidian (.*)": "   $1",
+      "(.*) — Mozilla Firefox": "      $1",
+      "(.*) / X — Mozilla Firefox": "      $1",
+      "(.*) - Gmail — Mozilla Firefox": "      $1",
+      "(.*) - Youtube — Mozilla Firefox": "    ",
+      "(.*) - Wikipedia — Mozilla Firefox": "      $1"
+    }
+  },
+
+  "sway/scratchpad": {
+    "format": "{icon} {count}",
+    "show-empty": false,
+    "format-icons": ["", ""],
+    "tooltip": true,
+    "tooltip-format": "{app}: {title}",
+    "on-click": "swaymsg scratchpad show"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 10
+    },
+    "format": "{capacity}% {icon}",
+    "min-length": 6,
+    "max-length": 6,
+    "tooltip-format": "{time}",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-charging": "{capacity}% 󱐋",
+    "format-full": "{capacity}% 󰟩"
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}",
+    "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖"],
+    "scroll-step": 1,
+    "tooltip": true,
+    "tooltip-format": "{percent}%",
+    "on-click": "light -S 100",
+    "on-click-right": "light -S 1",
+    "on-click-middle": "$HOME/bin/sway/gammatoggle"
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "format-alt": "{:%A, %B %d, %Y (%R)}",
+    "min-length": 5,
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+
+  "cpu": {
+    "interval": 5,
+    "format": "{usage}% ",
+    "max-length": 10
+  },
+
+  "memory": {
+    "interval": 10,
+    "format": "{percentage}% ",
+    "max-length": 10
+  },
+
+  "temperature": {
+    "interval": 5,
+    "format": "{temperature}°C ",
+    "max-length": 10
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "timeout": 300,
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
+
+  "network": {
+    "format-wifi": "{signalStrength}% {icon}",
+    "min-length": 6,
+    "max-length": 6,
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-wifi-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid}\t{frequency} GHz\n\nSignal Strength: {signalStrength}% {signaldBm}",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+    "interval": 60,
+    "on-click": "nm-connection-editor"
+  },
+
+  "bluetooth": {
+    "format-on": "",
+    "format-disabled": "󰂲",
+    "format-connected": " ({num_connections})",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "rfkill toggle bluetooth",
+    "on-click-right": "blueman-manager"
+  },
+
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "min-length": 6,
+    "max-length": 6,
+    "format-muted": "",
+    "format-icons": {
+      "bluez_output.00_16_94_2B_7E_CB.1": "",
+      "headphone": "",
+      "default": ["", ""]
+    },
+    "max-volume": 100,
+    "scroll-step": 1,
+    "on-click": "amixer set Master toggle",
+    "on-click-right": "pavucontrol",
+    "ignored-sinks": ["Easy Effects Sink"]
+  },
+
+  "mpris": {
+    "max-length": 150,
+    "format": "{player_icon} {title}",
+    "format-paused": "{status_icon} {title}",
+    "tooltip-format": "{dynamic}",
+    "ellipsis": "...",
+    "player-icons": {
+      "default": "▶ ",
+      "firefox": " ",
+      "librewolf": " "
+    },
+    "status-icons": {
+      "paused": "⏸ "
+    }
+  }
+}

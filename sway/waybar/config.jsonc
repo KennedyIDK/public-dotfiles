@@ -1,0 +1,55 @@
+// Waybar configuration file
+
+[
+  {
+    // Bar placement
+    "output": ["eDP-1", "DP-2"],
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+    "fixed-center": true,
+
+    "include": ["$HOME/.config/waybar/modules.json"],
+
+    // Module placement
+    "modules-left": [
+      "sway/workspaces",
+      "sway/scratchpad",
+      "tray",
+      "sway/window",
+    ],
+    "modules-center": [],
+    "modules-right": [
+      "mpris",
+      "bluetooth",
+      "pulseaudio",
+      "network",
+      "battery",
+      "backlight",
+      "idle_inhibitor",
+      "clock",
+    ],
+  },
+  {
+    // Bar placement
+    "output": ["DP-1"],
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+    "fixed-center": true,
+
+    "include": ["$HOME/.config/waybar/modules.json"],
+
+    // Module placement
+    "modules-left": [
+      "sway/workspaces",
+      "sway/scratchpad",
+      "tray",
+      "sway/window",
+    ],
+    "modules-center": [],
+    "modules-right": ["mpris", "bluetooth", "pulseaudio", "clock"],
+  },
+]

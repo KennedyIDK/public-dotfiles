@@ -1,0 +1,7 @@
+# Swaylock config file
+
+ignore-empty-password
+show-failed-attempts
+font=monospace 20
+color=000000
+indicator-radius=75
