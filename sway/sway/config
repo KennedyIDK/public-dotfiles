@@ -22,7 +22,7 @@ bar swaybar_command waybar
 exec swaync
 
 # Launch auto-tiling script
-exec_always "$HOME/bin/sway/auto-tiling"
+exec_always "$HOME/bin/sway/auto-tiling.py"
 
 # =============================================================================
 # Variables & Defaults
@@ -103,8 +103,8 @@ input "1739:52643:1A581000:00_06CB:CDA3_Touchpad" {
 # Touchpad Gestures
 bindgesture swipe:3:right workspace prev
 bindgesture swipe:3:left workspace next
-bindgesture swipe:4:right exec "$HOME/bin/sway/move-workspace-next"
-bindgesture swipe:4:left exec "$HOME/bin/sway/move-workspace-prev"
+bindgesture swipe:4:right exec "$HOME/bin/sway/move-workspace-next.sh"
+bindgesture swipe:4:left exec "$HOME/bin/sway/move-workspace-prev.sh"
 bindgesture swipe:4:up scratchpad show
 bindgesture swipe:4:down move scratchpad
 
@@ -123,29 +123,29 @@ bindsym $mod+w exec $browser
 bindsym $mod+e exec $file_manager
 bindsym $mod+o exec "flatpak run md.obsidian.Obsidian"
 
-# Obsidian Integration
-bindsym $mod+Shift+p exec "$HOME/bin/obsidian/copyspace"
-bindsym $mod+Shift+o exec "$HOME/bin/obsidian/timedcopyspace"
-bindsym $mod+Shift+t exec "$HOME/bin/obsidian/todo"
-bindsym $mod+Shift+s exec "$HOME/bin/obsidian/shoplist"
+# Obsidian Scripts
+bindsym $mod+Shift+p exec "$HOME/bin/obsidian/copyspace.sh"
+bindsym $mod+Shift+o exec "$HOME/bin/obsidian/timedcopyspace.sh"
+bindsym $mod+Shift+t exec "$HOME/bin/obsidian/todo.sh"
+bindsym $mod+Shift+s exec "$HOME/bin/obsidian/shoplist.sh"
 
 # Media Controls
 bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
 bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
-bindsym $mod+m exec "$HOME/bin/sway/libremute"
+bindsym $mod+m exec "$HOME/bin/sway/libremute.sh"
 
 # Brightness Controls
 bindsym --locked XF86MonBrightnessDown exec light -U 5
 bindsym --locked XF86MonBrightnessUp exec light -A 5
 
 # Display Controls
-bindsym $mod+Shift+g exec "$HOME/bin/sway/gammatoggle"
+bindsym $mod+Shift+g exec "$HOME/bin/sway/gammatoggle.sh"
 
 # Screenshot Controls
-bindsym Print exec "$HOME/bin/sway/swayshot"
-bindsym Shift+Print exec "$HOME/bin/sway/nameshot"
+bindsym Print exec "$HOME/bin/sway/swayshot.sh"
+bindsym Shift+Print exec "$HOME/bin/sway/nameshot.sh"
 
 # Notification Controls
 bindsym $mod+Shift+n exec swaync-client -t -sw

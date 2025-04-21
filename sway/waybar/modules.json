@@ -16,10 +16,8 @@
       "(.*) — LibreWolf": "      $1",
       "(.*) - Obsidian (.*)": "   $1",
       "(.*) — Mozilla Firefox": "      $1",
-      "(.*) / X — Mozilla Firefox": "      $1",
       "(.*) - Gmail — Mozilla Firefox": "      $1",
       "(.*) - Youtube — Mozilla Firefox": "    ",
-      "(.*) - Wikipedia — Mozilla Firefox": "      $1"
     }
   },
 
@@ -55,7 +53,7 @@
     "tooltip-format": "{percent}%",
     "on-click": "light -S 100",
     "on-click-right": "light -S 1",
-    "on-click-middle": "$HOME/bin/sway/gammatoggle"
+    "on-click-middle": "$HOME/bin/sway/gammatoggle.sh"
   },
 
   "clock": {
