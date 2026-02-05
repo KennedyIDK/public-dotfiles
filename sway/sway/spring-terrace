@@ -1,0 +1,28 @@
+# Sway settings for spring-terrace
+
+# Output
+set $laptop eDP-1
+output $laptop {
+    background ~/.backgrounds/sway/eDP-1/image.jpg fill
+    resolution 1920x1080
+    position 0,0
+}
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+
+# Touchpad Settings
+input "1739:52643:1A581000:00_06CB:CDA3_Touchpad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+    accel_profile flat
+}
+
+# Touchpad Gestures
+bindgesture swipe:3:right workspace prev_on_output
+bindgesture swipe:3:left workspace next_on_output
+bindgesture swipe:4:right exec $HOME/bin/sway/swipe-move-workspace.sh next
+bindgesture swipe:4:left exec $HOME/bin/sway/move-workspace-prev.sh prev
+bindgesture swipe:4:up scratchpad show
+bindgesture swipe:4:down move scratchpad

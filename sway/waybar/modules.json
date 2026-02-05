@@ -1,35 +1,72 @@
 {
+  "custom/weather": {
+    "format": "{}°",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "wttrbar --date-format %m/%d --hide-conditions --location Toronto",
+    "return-type": "json"
+  },
   "custom/separator": {
     "format": "|",
     "interval": "once",
     "tooltip": false
   },
-
+  "memory": {
+    "interval": 10,
+    "format": "  {percentage}%",
+    "min-length": 6,
+    "max-length": 6
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "  {usage}%",
+    "min-length": 6,
+    "max-length": 6
+  },
+  "temperature": {
+    "interval": 5,
+    "format": "  {temperatureC}°C",
+    "min-length": 6,
+    "max-length": 6
+  },
   "sway/window": {
     "format": "{title}",
-    "max-length": 100,
+    "max-width": 150,
+    "icon": true,
+    "icon-size": 20,
     "tooltip": false,
     "rewrite": {
-      "~": "🏡",
-      "nvim": "   $1",
-      "nvim (.*)": "   $1",
-      "(.*) — LibreWolf": "      $1",
-      "(.*) - Obsidian (.*)": "   $1",
-      "(.*) — Mozilla Firefox": "      $1",
-      "(.*) - Gmail — Mozilla Firefox": "      $1",
-      "(.*) - Youtube — Mozilla Firefox": "    ",
+      "(.*) — LibreWolf": "$1",
+      "(.*) - Obsidian (.*)": "$1",
+      "(.*) — Mozilla Firefox": "$1",
+      "(.*) - Gmail — Mozilla Firefox": "$1",
+      "(.*) - Youtube — Mozilla Firefox": "$1",
+      "(.*) — Strawberry Music Player": "$1"
     }
   },
-
   "sway/scratchpad": {
-    "format": "{icon} {count}",
+    "format": "{count}",
     "show-empty": false,
-    "format-icons": ["", ""],
     "tooltip": true,
     "tooltip-format": "{app}: {title}",
     "on-click": "swaymsg scratchpad show"
   },
-
+  "mpris": {
+    "expand": true,
+    "format": "{player_icon} {title} - {artist}",
+    "format-paused": "{status_icon} {title} - {artist}",
+    "tooltip-format": "{dynamic}",
+    "ellipsis": "...",
+    "player-icons": {
+      "default": "▶ ",
+      "firefox": " ",
+      "librewolf": " ",
+      "strawberry": "♫ "
+    },
+    "status-icons": {
+      "paused": "⏸ "
+    }
+  },
   "battery": {
     "states": {
       "warning": 30,
@@ -39,15 +76,35 @@
     "min-length": 6,
     "max-length": 6,
     "tooltip-format": "{time}",
-    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
     "format-charging": "{capacity}% 󱐋",
     "format-full": "{capacity}% 󰟩"
   },
-
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon}",
-    "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖"],
+    "format-icons": [
+      "󱩎",
+      "󱩏",
+      "󱩐",
+      "󱩑",
+      "󱩒",
+      "󱩓",
+      "󱩔",
+      "󱩕",
+      "󱩖"
+    ],
     "scroll-step": 1,
     "tooltip": true,
     "tooltip-format": "{percent}%",
@@ -55,7 +112,6 @@
     "on-click-right": "light -S 1",
     "on-click-middle": "$HOME/bin/sway/gammatoggle.sh"
   },
-
   "clock": {
     "format": "{:%H:%M}",
     "format-alt": "{:%A, %B %d, %Y (%R)}",
@@ -80,63 +136,44 @@
       "on-scroll-down": "shift_down"
     }
   },
-
-  "cpu": {
-    "interval": 5,
-    "format": "{usage}% ",
-    "max-length": 10
-  },
-
-  "memory": {
-    "interval": 10,
-    "format": "{percentage}% ",
-    "max-length": 10
-  },
-
-  "temperature": {
-    "interval": 5,
-    "format": "{temperature}°C ",
-    "max-length": 10
-  },
-
   "idle_inhibitor": {
-    "format": "{icon}",
+    "format": "",
     "timeout": 300,
-    "format-icons": {
-      "activated": "",
-      "deactivated": ""
-    }
+    "justify": "left"
   },
-
   "tray": {
     "icon-size": 21,
     "spacing": 10
   },
-
   "network": {
     "format-wifi": "{signalStrength}% {icon}",
     "min-length": 6,
     "max-length": 6,
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
     "format-wifi-disconnected": "󰤮",
     "tooltip-format-wifi": "{essid}\t{frequency} GHz\n\nSignal Strength: {signalStrength}% {signaldBm}",
     "tooltip-format-disconnected": "Disconnected",
-    "max-length": 50,
     "interval": 60,
-    "on-click": "nm-connection-editor"
+    "on-click": "nm-applet --indicator"
   },
-
   "bluetooth": {
     "format-on": "",
     "format-disabled": "󰂲",
-    "format-connected": " ({num_connections})",
+    "format-connected": "({num_connections})  ",
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "on-click": "rfkill toggle bluetooth",
-    "on-click-right": "blueman-manager"
+    "on-click-right": "blueman-manager",
+    "min-length": 6,
+    "max-length": 6
   },
-
   "pulseaudio": {
     "format": "{volume}% {icon}",
     "min-length": 6,
@@ -145,28 +182,17 @@
     "format-icons": {
       "bluez_output.00_16_94_2B_7E_CB.1": "",
       "headphone": "",
-      "default": ["", ""]
+      "default": [
+        "",
+        ""
+      ]
     },
     "max-volume": 100,
     "scroll-step": 1,
-    "on-click": "amixer set Master toggle",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-right": "pavucontrol",
-    "ignored-sinks": ["Easy Effects Sink"]
-  },
-
-  "mpris": {
-    "max-length": 150,
-    "format": "{player_icon} {title}",
-    "format-paused": "{status_icon} {title}",
-    "tooltip-format": "{dynamic}",
-    "ellipsis": "...",
-    "player-icons": {
-      "default": "▶ ",
-      "firefox": " ",
-      "librewolf": " "
-    },
-    "status-icons": {
-      "paused": "⏸ "
-    }
+    "ignored-sinks": [
+      "Easy Effects Sink"
+    ]
   }
 }

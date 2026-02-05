@@ -1,0 +1,18 @@
+# Keyboard configuration for sway
+
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+
+# Settings
+
+input * {
+    xkb_layout us
+    xkb_options caps:super
+}
+
+
+# Vim directional keys
+set $left h
+set $down j
+set $up k
+set $right l
+

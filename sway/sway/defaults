@@ -1,0 +1,21 @@
+# Defaults configuration for sway
+
+# Default Terminal
+set $term kitty
+
+# Default Editor
+set $editor nvim
+
+# Default Browser
+set $browser firefox
+# set $browser vivaldi
+
+# Default File Manager
+set $file_manager thunar
+
+# Default Menu
+set $menu rofi -show drun
+
+# Default Font
+font pango:"Atkinson Hyperlegible" Regular 10
+

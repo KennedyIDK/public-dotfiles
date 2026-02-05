@@ -40,12 +40,12 @@ shopt -s checkwinsize
 # "**" will match all files and zero or more directories and subdirectories
 shopt -s globstar
 
-# Append to history, don't overwrite it
-shopt -s histappend
-
 # =============================================================================
 # History
 # =============================================================================
+
+# Append to history, don't overwrite it
+shopt -s histappend
 
 HISTFILE="$HOME/.bash_history"
 HISTSIZE=1000
@@ -56,39 +56,6 @@ HISTCONTROL=ignoreboth      # Ignore duplicates and commands starting with a spa
 PROMPT_COMMAND='history -a' # Append to history file immediately
 
 # =============================================================================
-# Environment Variables
-# =============================================================================
-
-# Ensure PATH includes local and user bin
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
-  PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
-export PATH
-
-# Default Editor
-export EDITOR=nvim
-export VISUAL=nvim
-
-# Screenshot Directory
-export GRIM_DEFAULT_DIR="$HOME/screenshots"
-
-# Age Keys
-export AGE_PUBKEY="age15gtuse8y5ctrscevnd3n5fzljez07dv23du2lf0ekq2snj5c7ufscgyqku"
-export AGE_SECKEY="$HOME/.config/age/age-keys.txt.age"
-
-# Flatpak Configuration
-export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/iain/.local/share/flatpak/exports/share
-
-# Ranger Configuration
-export RANGER_LOAD_DEFAULT_RC=FALSE
-
-# Bat Theme
-export BAT_THEME="1337"
-
-# GCC Colors
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# =============================================================================
 # Shell Features
 # =============================================================================
 
@@ -97,6 +64,10 @@ if [ -x /usr/bin/dircolors ]; then
   test -r "$HOME/.dircolors" && eval "$(dircolors -b "$HOME/.dircolors")"
 else
   eval "$(dircolors -b)"
+fi
+
+if [ -s $HOME/bin/bash/lscolors.sh ]; then
+  source $HOME/bin/bash/lscolors.sh
 fi
 
 # Autocompletion
@@ -113,7 +84,7 @@ fi
 
 # Initialize oh-my-posh, fzf, and zoxide
 eval "$(fzf --bash)"
-eval "$(oh-my-posh init bash --config ~/appdata/ohmyposh/idk-hul10.omp.json)"
+eval "$(oh-my-posh init bash --config ~/.config/ohmyposh/idk-hul10.omp.json)"
 eval "$(zoxide init bash)"
 
 # =============================================================================
@@ -121,4 +92,4 @@ eval "$(zoxide init bash)"
 # =============================================================================
 
 # Display custom header in terminal
-terminal-header.sh
+# terminal-header.sh

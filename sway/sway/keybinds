@@ -1,0 +1,41 @@
+# Keybinds for sway
+
+# Modifier Key
+
+set $mod Mod4
+
+# Application Launchers
+
+bindsym $mod+d exec $menu
+bindsym $mod+t exec $term
+bindsym $mod+w exec $browser
+bindsym $mod+e exec $file_manager
+bindsym $mod+o exec "flatpak run md.obsidian.Obsidian"
+
+# Scripts
+
+set $script_dir $HOME/bin/sway
+
+## Screenshot Scripts
+
+bindsym Print exec $script_dir/swayshot.sh
+bindsym Shift+Print exec $script_dir/swayshot.sh named
+
+## Application Muting Script
+
+bindsym $mod+m exec $script_dir/appmute.sh LibreWolf
+bindsym $mod+Alt+m exec $script_dir/appmute.sh Firefox
+
+## Obsidian Scripts
+
+set $obsidian_script_dir $HOME/bin/obsidian
+
+bindsym $mod+Shift+t exec $HOME/bin/todo
+bindsym $mod+Shift+p exec $obsidian_script_dir/copyspace.sh
+bindsym $mod+Shift+Alt+p exec $obsidian_script_dir/copyspace.sh -t
+bindsym $mod+Shift+s exec $obsidian_script_dir/shoplist.sh
+
+## Other Scripts
+
+bindsym $mod+Shift+g exec $script_dir/gammatoggle.sh
+

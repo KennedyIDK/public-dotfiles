@@ -1,0 +1,5 @@
+# Display configuration for sway
+
+# Default Desktop Background
+
+output * bg $HOME/.backgrounds/sway/default/image.jpg fill
